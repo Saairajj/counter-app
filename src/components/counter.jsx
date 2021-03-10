@@ -6,16 +6,21 @@ class Counter extends Component {
     tags: []
   };
 
-  // renderTags() {
-  //   if(this.state.tags.length === 0) {
-  //     return <h1>These are no tags</h1> ;
-  //   }else {
-  //     return <ul>{this.state.tags.map(tag => <li key = { tag } >{ tag }</li>)}</ul>;
-  //   }
-  // }
+  constructor() {
+    super();
+    this.handleIncrement = this.handleIncrement.bind(this);
+  }
 
-  handleIncrement () {
-    console.log("Incremented", this);
+  renderTags() {
+    if(this.state.tags.length === 0) {
+      return <h1>These are no tags</h1> ;
+    }else {
+      return <ul>{this.state.tags.map(tag => <li key = { tag } >{ tag }</li>)}</ul>;
+    }
+  }
+
+  handleIncrement = () => {
+    this.setState({ count : this.state.count + 1});
   }
 
   render() {
