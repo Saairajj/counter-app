@@ -8,8 +8,10 @@ class Moviess extends Component {
   }
 
   handleDeletion = (movie) => {
-    // this.setState({ count : this.state.count - 1})
-    console.log(movie);
+    const movies = this.state.movies.filter((m) => {
+      return m._id !== movie._id;
+    })
+    this.setState( { movies } );
   }
 
   render() { 
@@ -18,19 +20,19 @@ class Moviess extends Component {
          <table className="table">
           <thead>
             <tr>
-              <th scope="col">Title</th>
-              <th scope="col">Genre</th>
-              <th th scope="col">Stock</th>
-              <th scope="col">Rate</th>
-              <th scope="col"></th>
+              <th>Title</th>
+              <th>Genre</th>
+              <th>Stock</th>
+              <th>Rate</th>
+              <th></th>
             </tr>
           </thead>
 
           <tbody>
             {this.state.movies.map((movie) => {
               return (
-                    <tr>
-                      <th scope ="row">{movie.title}</th>
+                    <tr key={movie._id} >
+                      <td >{movie.title}</td>
                       <td>{movie.genre.name}</td>
                       <td>{movie.numberInStock}</td>
                       <td>{movie.dailyRentalRate}</td>
